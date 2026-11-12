@@ -22,8 +22,19 @@
 
   document.addEventListener("visibilitychange", function () {
     hidden = document.hidden;
-    if (bg) bg.style.animationPlayState = hidden ? "paused" : "running";
   });
+
+  /* Colour cycle: small stepped changes instead of a per-frame filter animation.
+     Smooth to the eye, but cheap enough for software rendering and weak laptops. */
+  if (bg) {
+    var hues = [265, 190, 330, 45, 120];
+    setInterval(function () {
+      if (hidden) return;
+      for (var k = 0; k < hues.length; k++) hues[k] = (hues[k] + 4) % 360;
+      var orbs = bg.querySelectorAll("i");
+      for (var j = 0; j < orbs.length; j++) orbs[j].style.background = "hsl(" + hues[j] + " 95% 62%)";
+    }, 500);
+  }
 
   /* ---------- colourful flowing cursor trail ---------- */
   if (!reduce && window.matchMedia("(hover:hover)").matches) {
