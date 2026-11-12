@@ -21,7 +21,7 @@ img{max-width:100%;display:block}
 
 /* ---- animated rainbow glow background ---- */
 .bg-anim{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.bg-anim i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.40}
+.bg-anim i{position:absolute;border-radius:50%;filter:blur(35px);opacity:.40}
 .bg-anim i:nth-child(1){width:40vw;height:40vw;left:-10%;top:-12%;background:hsl(265 95% 62%)}
 .bg-anim i:nth-child(2){width:36vw;height:36vw;right:-10%;top:6%;background:hsl(190 95% 55%)}
 .bg-anim i:nth-child(3){width:32vw;height:32vw;left:16%;bottom:-16%;background:hsl(330 95% 60%)}

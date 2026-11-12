@@ -30,10 +30,10 @@
     var hues = [265, 190, 330, 45, 120];
     setInterval(function () {
       if (hidden) return;
-      for (var k = 0; k < hues.length; k++) hues[k] = (hues[k] + 4) % 360;
+      for (var k = 0; k < hues.length; k++) hues[k] = (hues[k] + 6) % 360;
       var orbs = bg.querySelectorAll("i");
       for (var j = 0; j < orbs.length; j++) orbs[j].style.background = "hsl(" + hues[j] + " 95% 62%)";
-    }, 500);
+    }, 1200);
   }
 
   /* ---------- colourful flowing cursor trail ---------- */
