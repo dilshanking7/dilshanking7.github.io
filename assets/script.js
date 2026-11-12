@@ -1,23 +1,11 @@
 // Dilshan Ansari — portfolio shared script
 (function () {
   "use strict";
-
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // year
   document.querySelectorAll(".year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- intro (image + circle merge) ---------- */
-  var intro = document.getElementById("intro");
-  if (intro) {
-    if (reduce) { intro.style.display = "none"; }
-    else {
-      setTimeout(function () { intro.classList.add("hide"); }, 1250);
-      setTimeout(function () { intro.style.display = "none"; }, 1750);
-    }
-  }
-
-  /* ---------- colourful flowing cursor trail ---------- */
+  /* colourful flowing cursor trail */
   if (!reduce && window.matchMedia("(hover:hover)").matches) {
     var dot = document.createElement("div");
     dot.className = "cursor-dot";
@@ -43,7 +31,7 @@
         tr.y += (py - tr.y) * 0.35;
         px = tr.x; py = tr.y;
         var hue = (pi + i * 22) % 360;
-        tr.el.style.setProperty("--c", "hsl(" + hue + " 90% 62%)");
+        tr.el.style.setProperty("--c", "hsl(" + hue + " 85% 62%)");
         tr.el.style.transform = "translate(" + (tr.x - tr.el.offsetWidth / 2) + "px," + (tr.y - tr.el.offsetHeight / 2) + "px)";
       });
       pi = (pi + 3) % 360;
@@ -51,7 +39,7 @@
     })();
   }
 
-  /* ---------- typing on scroll ---------- */
+  /* typing on scroll */
   function typeInto(el) {
     var text = el.getAttribute("data-text") || "";
     el.textContent = "";
@@ -59,7 +47,7 @@
     (function step() {
       if (i <= text.length) {
         el.textContent = text.slice(0, i++);
-        setTimeout(step, 22);
+        setTimeout(step, 38);
       }
     })();
   }
@@ -75,26 +63,39 @@
           io.unobserve(en.target);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.15 });
     targets.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---------- skill bars on scroll ---------- */
+  /* generic fade reveal */
+  var fades = document.querySelectorAll(".fade");
+  if (fades.length) {
+    if (reduce || !("IntersectionObserver" in window)) {
+      fades.forEach(function (el) { el.classList.add("in"); });
+    } else {
+      var ioF = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add("in"); ioF.unobserve(en.target); }
+        });
+      }, { threshold: 0.15 });
+      fades.forEach(function (el) { ioF.observe(el); });
+    }
+  }
+
+  /* skill bars */
   var bars = document.querySelectorAll(".skill");
   if (bars.length) {
     if (reduce || !("IntersectionObserver" in window)) {
       bars.forEach(function (b) { b.classList.add("in"); });
     } else {
       var io2 = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add("in"); io2.unobserve(en.target); }
-        });
-      }, { threshold: 0.3 });
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io2.unobserve(en.target); } });
+      }, { threshold: 0.25 });
       bars.forEach(function (b) { io2.observe(b); });
     }
   }
 
-  /* ---------- gallery stack ---------- */
+  /* gallery stack */
   var stack = document.getElementById("stack");
   var dotsWrap = document.getElementById("stackDots");
   if (stack && dotsWrap) {
