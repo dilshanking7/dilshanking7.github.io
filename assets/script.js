@@ -40,6 +40,7 @@
   if (!reduce && window.matchMedia("(hover:hover)").matches) {
     var dot = document.createElement("div");
     dot.className = "cursor-dot";
+    dot.style.transform = "translate(-100px,-100px)";
     document.body.appendChild(dot);
     var N = 14, trails = [], mx = -100, my = -100, pi = 0, raf = null, lastMove = 0;
     for (var i = 0; i < N; i++) {
