@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Views — Dilshan Ansari (private)</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+       background:linear-gradient(160deg,#151b33,#0a0e1c);color:#fff;
+       font-family:'Space Grotesk',system-ui,sans-serif;text-align:center;padding:24px}
+  .box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+       border-radius:24px;padding:48px 40px;max-width:520px;width:100%}
+  h1{font-size:22px;margin:0 0 8px;letter-spacing:.02em}
+  .num{font-size:64px;font-weight:700;line-height:1;
+       background:linear-gradient(90deg,#5b5bd6,#0ea5e9);-webkit-background-clip:text;
+       background-clip:text;color:transparent}
+  .lbl{color:#9fb0c8;font-size:14px;margin-top:6px}
+  .muted{color:#6b7c95;font-size:13px;margin-top:26px}
+  a{color:#9fe7cf}
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>Dilshan Ansari — site views</h1>
+    <div class="num" id="views">…</div>
+    <div class="lbl">page views</div>
+    <div class="lbl" style="margin-top:14px"><span id="uniques">…</span> unique visitors</div>
+    <div class="muted">Updated <span id="updated">…</span> · <a href="https://github.com/dilshanking7/dilshanking7.github.io">Portfolio</a></div>
+  </div>
+<script>
+fetch('views.json').then(function(r){return r.json()}).then(function(d){
+  document.getElementById('views').textContent = d.views;
+  document.getElementById('uniques').textContent = d.uniques;
+  document.getElementById('updated').textContent = d.updated;
+}).catch(function(){
+  document.getElementById('views').textContent = '—';
+});
+</script>
+</body>
+</html>
