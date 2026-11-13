@@ -7,33 +7,69 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="logo.svg" type="image/svg+xml">
 <style>
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-       background:linear-gradient(160deg,#151b33,#0a0e1c);color:#fff;
-       font-family:'Space Grotesk',system-ui,sans-serif;text-align:center;padding:24px}
+  body{margin:0;min-height:100vh;background:linear-gradient(160deg,#151b33,#0a0e1c);color:#fff;
+       font-family:'Space Grotesk',system-ui,sans-serif;padding:40px 18px}
+  .wrap{max-width:760px;margin:0 auto}
   .box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
-       border-radius:24px;padding:48px 40px;max-width:520px;width:100%}
-  h1{font-size:22px;margin:0 0 8px;letter-spacing:.02em}
-  .num{font-size:64px;font-weight:700;line-height:1;
+       border-radius:24px;padding:36px 30px;text-align:center}
+  h1{font-size:22px;margin:0 0 22px;letter-spacing:.02em}
+  .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+  .stat{flex:1;min-width:140px}
+  .num{font-size:52px;font-weight:700;line-height:1;
        background:linear-gradient(90deg,#5b5bd6,#0ea5e9);-webkit-background-clip:text;
        background-clip:text;color:transparent}
-  .lbl{color:#9fb0c8;font-size:14px;margin-top:6px}
-  .muted{color:#6b7c95;font-size:13px;margin-top:26px}
+  .lbl{color:#9fb0c8;font-size:13px;margin-top:6px}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px;text-align:left}
+  th,td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.10)}
+  th{color:#9fb0c8;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+  td.r,th.r{text-align:right}
+  h2{font-size:15px;color:#9fb0c8;margin:26px 0 4px;text-transform:uppercase;letter-spacing:.12em}
+  .muted{color:#6b7c95;font-size:13px;margin-top:24px}
   a{color:#9fe7cf}
+  .empty{color:#6b7c95;font-size:14px;padding:10px}
 </style>
 </head>
 <body>
+<div class="wrap">
   <div class="box">
     <h1>Dilshan Ansari — site views</h1>
-    <div class="num" id="views">…</div>
-    <div class="lbl">page views</div>
-    <div class="lbl" style="margin-top:14px"><span id="uniques">…</span> unique visitors</div>
-    <div class="muted">Updated <span id="updated">…</span> · <a href="https://github.com/dilshanking7/dilshanking7.github.io">Portfolio</a></div>
+    <div class="row">
+      <div class="stat"><div class="num" id="views">…</div><div class="lbl">page views</div></div>
+      <div class="stat"><div class="num" id="uniques">…</div><div class="lbl">unique visitors</div></div>
+    </div>
+
+    <h2>Kahan se aaye</h2>
+    <table><thead><tr><th>Source</th><th class="r">Views</th><th class="r">Uniques</th></tr></thead>
+    <tbody id="refs"><tr><td colspan="3" class="empty">loading…</td></tr></tbody></table>
+
+    <h2>Recent</h2>
+    <table><thead><tr><th>Time</th><th class="r">Views</th><th class="r">Uniques</th></tr></thead>
+    <tbody id="recent"><tr><td colspan="3" class="empty">loading…</td></tr></tbody></table>
+
+    <div class="muted">Updated <span id="updated">…</span> · <a href="https://dilshanking7.github.io">Portfolio</a></div>
   </div>
+</div>
 <script>
 fetch('views.json').then(function(r){return r.json()}).then(function(d){
   document.getElementById('views').textContent = d.views;
   document.getElementById('uniques').textContent = d.uniques;
   document.getElementById('updated').textContent = d.updated;
+  var rt = document.getElementById('refs');
+  if (d.referrers && d.referrers.length) {
+    rt.innerHTML = d.referrers.map(function(x){
+      return '<tr><td>' + (x.name || 'direct') + '</td><td class="r">' + x.views + '</td><td class="r">' + x.uniques + '</td></tr>';
+    }).join('');
+  } else {
+    rt.innerHTML = '<tr><td colspan="3" class="empty">Abhi koi referrer data nahi</td></tr>';
+  }
+  var nt = document.getElementById('recent');
+  if (d.recent && d.recent.length) {
+    nt.innerHTML = d.recent.map(function(x){
+      return '<tr><td>' + String(x.t).replace('T',' ').replace('Z','') + '</td><td class="r">' + x.v + '</td><td class="r">' + x.u + '</td></tr>';
+    }).join('');
+  } else {
+    nt.innerHTML = '<tr><td colspan="3" class="empty">Abhi data nahi</td></tr>';
+  }
 }).catch(function(){
   document.getElementById('views').textContent = '—';
 });
