@@ -1,0 +1,13 @@
+/* TEAM */
+Dilshan Ansari — full-stack web developer & AI automation engineer
+From Khalari, Dhanbad, Jharkhand, India
+Email: indiasite13@gmail.com
+GitHub: https://github.com/dilshanking7
+LinkedIn: https://www.linkedin.com/in/dilshan-a-82844144b
+
+/* SITE */
+Portfolio: https://dilshanking7.github.io
+Built with HTML, CSS and JavaScript. No frameworks.
+
+/* THANKS */
+Every client and every person who gave feedback.
