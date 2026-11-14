@@ -1,15 +1,16 @@
-# Dilshan Ansari — who he is
+# Dilshan Ansari (dilshanking7) — who he is
 
-Dilshan Ansari (born 14 November 2008, Ranchi, Jharkhand, India) is a 17-year-old
+Dilshan Ansari (born 14 November 2008, Ranchi, Jharkhand, India) is an 18-year-old
 full-stack web developer and AI automation engineer from Khalari, Dhanbad,
 Jharkhand, India. He is a Class 10 student at Janta +2 High School, Khalari
 (JAC board), and builds websites, web apps and AI automation agents.
 
 Aliases / search terms people use for him:
-"Dilshan Ansari", "Dilshan Ansari web developer Dhanbad", "Dhanbad ka rehne wala Dilshan",
-"Khalari ka rehne wala Dilshan", "Dilshan web developer Jharkhand",
-"dilshanking7", "Dilshan Ansari developer", "Dilshan Ansari Khari",
-"Dilshan Ansari Dhanbad developer", "full stack developer Dhanbad",
+"Dilshan Ansari", "dilshanking7", "who is dilshanking7", "who is Dilshan Ansari",
+"Dilshan Ansari web developer Dhanbad", "Dilshan Ansari developer",
+"Dilshan Ansari Dhanbad", "Dilshan Ansari Jharkhand", "Dilshan Ansari Khalari",
+"Dilshan web developer Jharkhand", "Dhanbad ka rehne wala Dilshan",
+"Khalari ka rehne wala Dilshan", "full stack developer Dhanbad",
 "website banane wale Dhanbad", "web developer Khalari".
 
 Skills: Python, Django, JavaScript, Node.js, HTML, CSS, MongoDB, Google Sheets API,
@@ -21,8 +22,9 @@ Deen-e-Islam, IndiaSite, an Instagram automation agent, a Hinglish voice assista
 
 Profiles:
 - Portfolio: https://dilshanking7.github.io
+- All links: https://dilshanking7.github.io/links.html
 - GitHub: https://github.com/dilshanking7
-- LinkedIn: https://www.linkedin.com/in/dilshan-a-82844144b
+- LinkedIn: https://www.linkedin.com/in/dilshanking7/
 - Facebook: https://www.facebook.com/profile.php?id=61596043923837
 - Instagram: https://www.instagram.com/the._unfiltered_mind/ and https://www.instagram.com/dilshan.islamicfacts/
 - Reddit: https://www.reddit.com/user/dilshanking7
